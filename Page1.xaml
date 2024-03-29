@@ -1,0 +1,50 @@
+﻿<Page x:Class="WpfApp3.Page1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp3"
+        mc:Ignorable="d"
+        Title="Page1"  >
+
+    <Grid Background="Beige">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="600*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80*"/>
+            <RowDefinition Height="100"/>
+        </Grid.RowDefinitions>
+        <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" ></Frame>
+        <DataGrid x:Name= "Dict" AutoGenerateColumns="False" IsReadOnly="True" Grid.ColumnSpan="2" Margin="0,0,0,30">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Термин" Binding="{Binding Concept}" Width="200">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextWrapping" Value="Wrap"></Setter>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Определение" Binding="{Binding Difinition}" Width="*" >
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextWrapping" Value="Wrap"></Setter>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="Ссылка" Binding="{Binding Sourc}" Width="370">
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="TextWrapping" Value="Wrap"></Setter>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="add" Content="Добавить" Margin="100,30,840,0" Grid.Row="1" Click="AddClick" Background="Cyan" Height="53" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+        <Button x:Name="del" Content="Удалить" Margin="840,30,100,0" Grid.Row="1" Click="DelClick" Background="Pink" Height="53" VerticalAlignment="Top" Grid.Column="1"/>
+
+    </Grid>
+</Page>
