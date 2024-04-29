@@ -18,7 +18,7 @@
         <TextBlock  Text="Термин" TextAlignment ="Center" Margin="0,40"></TextBlock>
         <TextBlock Text="Определение" TextAlignment ="Center" Grid.Row="1" Margin="0,40"></TextBlock>
         <TextBlock Text="Ссылка" TextAlignment ="Center" Grid.Row="2" Margin="0,40"></TextBlock>
-        <Button x:Name="Save" Content="Сохранить" Grid.Row="3" Grid.Column="1" Margin="0,0,20,0" Background="BurlyWood" Click="Save_Click" Height="65" VerticalAlignment="Center" HorizontalAlignment="Right" Width="385"/>
+        <Button x:Name="Save" Content="Сохранить" Grid.Row="3" Grid.Column="1" Margin="225,0,0,0" Background="BurlyWood" Click="Save_Click" Height="65" VerticalAlignment="Center" HorizontalAlignment="Left" Width="180"/>        
         <TextBox x:Name="Concept" Text="{Binding Concept}" Grid.Row="0" Grid.Column="1" Margin="15" Background="Linen"></TextBox>
         <TextBox x:Name="Difinition" Text="{Binding Difinition}"  Grid.Row="1" Grid.Column="1" Margin="15" Background="Linen"></TextBox>
         <TextBox x:Name="Source" Text="{Binding Sourc}"  Grid.Row="2" Grid.Column="1" Margin="15" Background="Linen"></TextBox>

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp3"
         mc:Ignorable="d"
-        Title="Page1"  >
+        Title="Page1" d:DesignHeight="1080" d:DesignWidth="1920"  >
 
     <Grid Background="Beige">
         <Grid.ColumnDefinitions>
@@ -43,8 +43,8 @@
 
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="add" Content="Добавить" Margin="100,30,840,0" Grid.Row="1" Click="AddClick" Background="Cyan" Height="53" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
-        <Button x:Name="del" Content="Удалить" Margin="840,30,100,0" Grid.Row="1" Click="DelClick" Background="Pink" Height="53" VerticalAlignment="Top" Grid.Column="1"/>
+        <Button x:Name="add" Content="Добавить" Margin="100,30,0,0" Grid.Row="1" Click="AddClick" Background="Cyan" Height="53" VerticalAlignment="Top" Grid.Column="1" HorizontalAlignment="Left" Width="400"/>
+        <Button x:Name="del" Content="Удалить" Margin="0,30,100,0" Grid.Row="1" Click="DelClick" Background="Pink" Height="53" VerticalAlignment="Top" Grid.Column="1" HorizontalAlignment="Right" Width="400"/>
 
     </Grid>
 </Page>
