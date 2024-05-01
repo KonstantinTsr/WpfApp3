@@ -24,8 +24,8 @@ namespace WpfApp3
     /// </summary>
     public partial class Page1 : Page
     {
-        public static int maxId, minId,tagId = 0;
-        public static int [] delId;
+        public static int maxId, minId,tagId ;        
+        public static List<int> delId = new List<int>();
         public Page1()
         {
             InitializeComponent();
@@ -40,9 +40,7 @@ namespace WpfApp3
         public void DelClick(object sender, RoutedEventArgs e)
         {            
             using (var context = new DictionaryEntities())
-            {
-                maxId = context.Dictionary.Max(x => (int?)x.ID) ?? 0;
-                minId = maxId;
+            {                
                 if (MessageBox.Show("Вы действительно хотите удалить термин?", "Уведомление", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                 {
                     
@@ -53,7 +51,7 @@ namespace WpfApp3
                         context.Entry(selectedDictionary).State = EntityState.Deleted;
                         context.SaveChanges();
                         Dict.ItemsSource = context.Dictionary.ToList();
-                        delId[delId.Length + 1] = tagId;
+                        delId.Add(tagId);
                     }
                     
                         

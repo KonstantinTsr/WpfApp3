@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DocumentFormat.OpenXml.Office2010.Excel;
+using System;
 using System.Data.Entity;
 using System.Linq;
 using System.Text;
@@ -13,7 +14,7 @@ namespace WpfApp3
     public partial class MainAdd : Page
     {
         int saveId;
-        int[] nowId;
+        int nowId;
         private Dictionary setDic = new Dictionary();
         public MainAdd()
         {
@@ -27,32 +28,50 @@ namespace WpfApp3
         }
         public void Save_Click(object sender, RoutedEventArgs e)
         {
-            for (int i = 0; i < Page1.maxId +1; i++)
-            {
-                using (var context = new DictionaryEntities())
+            
+            using (var context = new DictionaryEntities())
+            {                
+                for (int i = 0; i < Page1.maxId + 1; i++)
                 {
+                    if(nowId == 2) break;
                     var dictionary = context.Dictionary.Find(i);
-                    
-                    if (dictionary == null )
+                    if (dictionary == null)
                     {
                         if (Page1.delId != null)
                         {
-                            for (int j = 0; j < Page1.delId.Length + 1; j++)
+                            foreach (var ID in Page1.delId)
                             {
-                                if (dictionary.ID != Page1.delId[j])
+                                nowId = 3;
+                                if (i != ID && i != Page1.minId && nowId != 1)
                                 {
-                                    Page1.minId = dictionary.ID;
+                                    Page1.minId = i;
+                                    nowId = 2;
                                 }
-                                
+                                if (i == ID)
+                                {
+                                    nowId = 1;
+                                }                               
                             }
                         }
-                        else 
+                        if (i != Page1.minId && nowId != 3)
                         {
                             Page1.minId = i;
+                            nowId = 2;
                         }
                     }
+                    else
+                    {
+                        if(i == Page1.minId)
+                        {
+                            Page1.minId = Page1.maxId +1;
+                            
+                        }
+                    }                    
                 }
+                if(nowId != 2) Page1.minId = Page1.maxId + 1;
+                nowId = 0;
             }
+            
             StringBuilder error = new StringBuilder();
             if (string.IsNullOrWhiteSpace(setDic.Concept))
             {
@@ -78,7 +97,7 @@ namespace WpfApp3
                 words.Concept = Concept.Text;
                 words.Difinition = Difinition.Text;
                 words.Sourc = Source.Text;
-                words.ID = Page1.maxId + 1;
+                words.ID = Page1.minId;
                 context.Dictionary.Add(words);
                 context.SaveChanges();
             }
